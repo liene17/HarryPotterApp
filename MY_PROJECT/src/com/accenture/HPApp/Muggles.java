@@ -2,15 +2,24 @@ package com.accenture.HPApp;
 
 public class Muggles {
 	private String name;
+	private int age; 
 	private String location;
-	private int health;
-	private boolean isWizard;
+	public boolean isWizard;
+	private int attitudeTrait;
 
-	public Muggles(String name, String location, int health, boolean isWizard) {
+	public Muggles(String name, int age, String location, boolean isWizard) {
 		this.name = name;
 		this.location = location;
-		this.health = health;
 		this.isWizard = isWizard;
+		this.age = age; 
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public String getLocation() {
@@ -25,32 +34,45 @@ public class Muggles {
 		return name;
 	}
 
-	public int getHealth() {
-		return health;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAttitudeTrait() {
+		return attitudeTrait;
 	}
 
 	public boolean isWizard() {
 		return true;
 	}
 
-	public void summon(Muggles muggle) {
-
+	public String goTo(Muggles muggle) {
+		if (!(this.location == muggle.location)) {
+			this.location = muggle.location;
+		} else {
+			System.out.println(this.name + "and" + muggle.name
+					+ "are already on the same place.");
+		}
+		return this.location;
 	}
 
-	private int makeDamage() {
-		return 10;
+	public String summon(Muggles muggle) {
+		muggle.goTo(this);
+		return muggle.location;
 	}
 
-	public int restoreHealth(int health) {
-		return 15;
+	private void doGood(Muggles muggle) {
+		attitudeTrait = attitudeTrait + 1;
+		System.out.println(muggle + " looks happy!");
 	}
 
-	public void fight(Muggles muggle) {
-
+	public void doBad(Muggles muggle) {
+		attitudeTrait = attitudeTrait - 1;
+		System.out.println(muggle + " looks sad. :(");
 	}
 
 	public String invitieTo(Muggles muggle, String location) {
-		return "school";
+		return "";
 	}
 
 	public String info() {
