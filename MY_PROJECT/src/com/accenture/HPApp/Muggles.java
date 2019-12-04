@@ -10,8 +10,7 @@ public class Muggles {
 	protected int damage;
 	protected String tower;
 
-	public Muggles(String name, String location, int health, int damage,
-			boolean isWizard) {
+	public Muggles(String name, String location, int health, int damage, boolean isWizard) {
 		this.name = name;
 		this.location = location;
 		if (health > 100) {
@@ -72,11 +71,9 @@ public class Muggles {
 	public String goTo(Muggles muggle) {
 		if (!(this.location.equals(muggle.location))) {
 			this.location = muggle.location;
-			System.out.println(this.name + " took a bus and went to "
-					+ muggle.name + " in " + this.location);
+			System.out.println(this.name + " took a bus and went to " + muggle.name + " in " + this.location);
 		} else {
-			System.out.println(this.name + " and " + muggle.name
-					+ " are already in " + this.location);
+			System.out.println(this.name + " and " + muggle.name + " are already in " + this.location);
 		}
 		return this.location;
 	}
@@ -121,69 +118,51 @@ public class Muggles {
 	public void fight(Object opponent) {
 		if (opponent instanceof Wizards) {
 			Wizards wizard = (Wizards) opponent;
-			System.out.println("This is fight is between " + this.name
-					+ " and " + wizard.getName() + ".");
+			System.out.println("This is fight is between " + this.name + " and " + wizard.getName() + ".");
 			// System.out.println(this);
 			// System.out.println(wizard);
 			while (this.isStillBrave() && wizard.isStillBrave()) {
-				System.out.println(this.name + " attacked " + wizard.getName()
-						+ " with a baseball bat.");
+				System.out.println(this.name + " attacked " + wizard.getName() + HarryPotterApp.muggleWeapons());
 				wizard.receivedDamage(this.damage);
 				// System.out.println(wizard);
 				if (this.isStillBrave() && wizard.isStillBrave()) {
-					System.out.println(wizard.getName() + " attacked "
-							+ this.name + " with a nasty spell.");
+					System.out.println(wizard.getName() + " attacked " + this.name + HarryPotterApp.wizardWeapons());
 					receivedDamage(wizard.getDamage());
 					// System.out.println(toString());
 				}
 			}
 			if (!isStillBrave()) {
-				System.out.println("Fight is finished! " + this.name
-						+ " health is below 20. " + this.name
-						+ " is going to Old Riga to get a drink."
-						+ wizard.getName() + " is victorious and has "
+				System.out.println("Fight is finished! " + this.name + " health is below 20. " + this.name
+						+ " is going to Old Riga to get a drink." + wizard.getName() + " is victorious and has "
 						+ wizard.getHealth() + " HP left.");
 			} else {
-				System.out
-						.println("Fight is finished! "
-								+ wizard.getName()
-								+ " health is below 20."
-								+ wizard.getName()
-								+ "is running to Diagon Ally to get a butterbeer for recovery."
-								+ this.name + " is victorious and has "
-								+ this.health + " HP left.");
+				System.out.println("Fight is finished! " + wizard.getName() + " health is below 20." + wizard.getName()
+						+ "is running to Diagon Ally to get a butterbeer for recovery." + this.name
+						+ " is victorious and has " + this.health + " HP left.");
 			}
 		} else {
 			Muggles muggle = (Muggles) opponent;
-			System.out.println("This is fight is between " + this.name
-					+ " and " + muggle.getName() + ".");
+			System.out.println("This is fight is between " + this.name + " and " + muggle.getName() + ".");
 			// System.out.println(this);
 			// System.out.println(muggle);
 			while (this.isStillBrave() && muggle.isStillBrave()) {
-				System.out.println(this.name + " attacked " + muggle.getName()
-						+ " with a baseball bat.");
+				System.out.println(this.name + " attacked " + muggle.getName() + HarryPotterApp.wizardWeapons());
 				muggle.receivedDamage(this.damage);
 				// System.out.println(muggle);
 				if (this.isStillBrave() && muggle.isStillBrave()) {
-					System.out.println(muggle.getName() + " attacked "
-							+ this.name + " with a fist on the eye.");
+					System.out.println(muggle.getName() + " attacked " + this.name + HarryPotterApp.muggleWeapons());
 					receivedDamage(muggle.getDamage());
 					// System.out.println(toString());
 				}
 			}
 			if (!isStillBrave()) {
-				System.out.println("Fight is finished! " + this.name
-						+ "`s health is below 20. " + this.name
-						+ " is going to Old RIga for recovery."
-						+ muggle.getName() + " is victorious and has "
+				System.out.println("Fight is finished! " + this.name + "`s health is below 20. " + this.name
+						+ " is going to Old RIga for recovery." + muggle.getName() + " is victorious and has "
 						+ muggle.getHealth() + " HP left.");
 			} else {
-				System.out
-						.println("Fight is finished! "
-								+ muggle.getName()
-								+ "`s health is below 20 and is going to Old Riga to recovery. "
-								+ this.name + " is victorious and has "
-								+ this.health + " HP left.");
+				System.out.println("Fight is finished! " + muggle.getName()
+						+ "`s health is below 20 and is going to Old Riga to recovery. " + this.name
+						+ " is victorious and has " + this.health + " HP left.");
 			}
 		}
 	}
@@ -194,7 +173,6 @@ public class Muggles {
 
 	@Override
 	public String toString() {
-		return "Muggles [name=" + name + ", health=" + health + ", damage="
-				+ damage + "]";
+		return "Muggles [name=" + name + ", health=" + health + ", damage=" + damage + "]";
 	}
 }
