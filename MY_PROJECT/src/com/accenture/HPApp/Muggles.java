@@ -3,25 +3,30 @@ package com.accenture.HPApp;
 import java.util.Random;
 
 public class Muggles {
-	private String name;
-	private int tower;
-	private String location;
+	protected String name;
+	protected String location;
 	public boolean isWizard;
-	private int attitudeTrait;
-	private int happinessLevel;
+	protected int health;
+	protected int damage;
+	protected String tower;
 
-	public Muggles(String name, String location, boolean isWizard) {
+	public Muggles(String name, String location, int health, int damage,
+			boolean isWizard) {
 		this.name = name;
 		this.location = location;
+		if (health > 100) {
+			health = 100;
+		} else if (health < 1) {
+			health = 1;
+		}
+		this.health = health;
+		if (damage > 100) {
+			damage = 100;
+		} else if (damage < 1) {
+			damage = 1;
+		}
+		this.damage = damage;
 		this.isWizard = isWizard;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
 	}
 
 	public String getName() {
@@ -32,98 +37,164 @@ public class Muggles {
 		this.name = name;
 	}
 
-	public int getAttitudeTrait() {
-		return attitudeTrait;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setAttitudeTrait(int attitudeTrait) {
-		this.attitudeTrait = attitudeTrait;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
-	public int getHappinessLevel() {
-		return happinessLevel;
+	public int getHealth() {
+		return health;
 	}
 
-	public void setHappinessLevel(int happinessLevel) {
-		this.happinessLevel = happinessLevel;
+	private void setHealth(int health) {
+		this.health = health;
+	}
+
+	protected int getDamage() {
+		return damage;
+	}
+
+	private void setDamage(int damage) {
+		this.damage = damage;
 	}
 
 	public boolean isWizard() {
 		return true;
 	}
 
-//	public String goTo(Muggles muggle2) {
-//		if (!(this.location == muggle2.location)) {
-//			this.location = muggle2.location;
-//		} else {
-//			System.out.println(this.name + "and" + muggle2.name
-//					+ "are already on the same place.");
-//		}
-//		return this.location;
-//	}
+	public void rename(String name) {
+		setName(name);
+	}
 
-//	public String summon(Muggles muggle) {
-//		muggle.goTo(this);
-//		return muggle.location;
-//	}
+	public String goTo(Muggles muggle) {
+		if (!(this.location.equals(muggle.location))) {
+			this.location = muggle.location;
+			System.out.println(this.name + " took a bus and went to "
+					+ muggle.name + " in " + this.location);
+		} else {
+			System.out.println(this.name + " and " + muggle.name
+					+ " are already in " + this.location);
+		}
+		return this.location;
+	}
+
+	public String summon(Muggles muggle) {
+		muggle.goTo(this);
+		return muggle.location;
+	}
 
 	public String sortRandomTower() {
-		String tower = "";
-		Random r = new Random();
-		int test = r.nextInt((4 - 1) + 1) + 1;
-		switch (test) {
-		case 1:
-			tower = "Gryffindor";
-			break;
-		case 2:
-			tower = "Ravenclaw";
-			break;
-		case 3:
-			tower = "Hufflepuff";
-			break;
-		case 4:
-			tower = "Slytherin";
-			break;
-		default:
-			tower = "No such tower available";
-		}
-		return tower;
-	}
-
-	private void doGoodTo(Muggles muggle) {
-		muggle.setHappinessLevel(muggle.happinessLevel + 1);
-		this.attitudeTrait++;
-	}
-
-	private String infoHappinessLevel() {
-		String happinessInfo = (happinessLevel > 5) ? "" + this.name
-				+ "is very happy"
-				: (happinessLevel <= 5 && happinessLevel > 0) ? "" + this.name
-						+ "is OK" : "" + this.name + "is feeling bad";
-		return happinessInfo;
-	}
-
-	public void doBad(Muggles muggle) {
-		muggle.setHappinessLevel(muggle.happinessLevel - 1);
-		this.attitudeTrait--;
-
-	}
-
-	private String infoAttitudeTrait() {
-		String attitudeInfo = (this.attitudeTrait > 5) ? "" + this.name
-				+ "is a hero"
-				: (this.attitudeTrait <= 5 && this.attitudeTrait > 0) ? ""
-						+ this.name + "is a normal person" : "" + this.name
-						+ "is a villain";
-		return attitudeInfo;
+		return "regular school.";
 	}
 
 	public String inviteTo(Muggles muggle, String location) {
-		return "";
+		this.location = location;
+		muggle.setLocation(location);
+		return this.location;
 	}
 
-	public String info() {
-		return name + " is at " + location + " and his attitude is "
-				+ attitudeTrait;
+	public boolean isStillBrave() {
+		if (this.health > 20) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void receivedDamage(int damage) {
+		if (isStillBrave() && damage > 0) {
+			if (this.health - damage > 0) {
+				this.health -= damage;
+				isStillBrave();
+			} else {
+				this.health = 0;
+				isStillBrave();
+			}
+		} else {
+			System.out.println("The planned damage is not valid.");
+		}
+	}
+
+	public void fight(Object opponent) {
+		if (opponent instanceof Wizards) {
+			Wizards wizard = (Wizards) opponent;
+			System.out.println("This is fight is between " + this.name
+					+ " and " + wizard.getName() + ".");
+			// System.out.println(this);
+			// System.out.println(wizard);
+			while (this.isStillBrave() && wizard.isStillBrave()) {
+				System.out.println(this.name + " attacked " + wizard.getName()
+						+ " with a baseball bat.");
+				wizard.receivedDamage(this.damage);
+				// System.out.println(wizard);
+				if (this.isStillBrave() && wizard.isStillBrave()) {
+					System.out.println(wizard.getName() + " attacked "
+							+ this.name + " with a nasty spell.");
+					receivedDamage(wizard.getDamage());
+					// System.out.println(toString());
+				}
+			}
+			if (!isStillBrave()) {
+				System.out.println("Fight is finished! " + this.name
+						+ " health is below 20. " + this.name
+						+ " is going to Old Riga to get a drink."
+						+ wizard.getName() + " is victorious and has "
+						+ wizard.getHealth() + " HP left.");
+			} else {
+				System.out
+						.println("Fight is finished! "
+								+ wizard.getName()
+								+ " health is below 20."
+								+ wizard.getName()
+								+ "is running to Diagon Ally to get a butterbeer for recovery."
+								+ this.name + " is victorious and has "
+								+ this.health + " HP left.");
+			}
+		} else {
+			Muggles muggle = (Muggles) opponent;
+			System.out.println("This is fight is between " + this.name
+					+ " and " + muggle.getName() + ".");
+			// System.out.println(this);
+			// System.out.println(muggle);
+			while (this.isStillBrave() && muggle.isStillBrave()) {
+				System.out.println(this.name + " attacked " + muggle.getName()
+						+ " with a baseball bat.");
+				muggle.receivedDamage(this.damage);
+				// System.out.println(muggle);
+				if (this.isStillBrave() && muggle.isStillBrave()) {
+					System.out.println(muggle.getName() + " attacked "
+							+ this.name + " with a fist on the eye.");
+					receivedDamage(muggle.getDamage());
+					// System.out.println(toString());
+				}
+			}
+			if (!isStillBrave()) {
+				System.out.println("Fight is finished! " + this.name
+						+ "`s health is below 20. " + this.name
+						+ " is going to Old RIga for recovery."
+						+ muggle.getName() + " is victorious and has "
+						+ muggle.getHealth() + " HP left.");
+			} else {
+				System.out
+						.println("Fight is finished! "
+								+ muggle.getName()
+								+ "`s health is below 20 and is going to Old Riga to recovery. "
+								+ this.name + " is victorious and has "
+								+ this.health + " HP left.");
+			}
+		}
+	}
+
+	public void info() {
+		System.out.println(this.name + " is at " + this.location);
+	}
+
+	@Override
+	public String toString() {
+		return "Muggles [name=" + name + ", health=" + health + ", damage="
+				+ damage + "]";
 	}
 }
