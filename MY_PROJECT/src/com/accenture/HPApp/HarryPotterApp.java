@@ -9,25 +9,24 @@ public class HarryPotterApp {
 	static List<Object> allCharacters = new ArrayList<Object>();
 
 	public static void main(String[] args) {
-		Wizards harry = new Wizards("Harry Potter", "Hogwarts", 50, 15, true);
+		Wizards harry = new Wizards("Harry Potter", "Hogwarts", 60, 15, true);
 		Wizards drako = new Wizards("Drako Malfoy", "Diagon Ally", 77, 12, true);
-		Muggles janka = new Muggles("Janka", "Plavnieki", 30, 19, false);
+		Muggles janka = new Muggles("Janka", "Plavnieki", 33, 19, false);
 
 		allCharacters.add(harry);
 		allCharacters.add(drako);
 		allCharacters.add(janka);
 //		Menu();
-		janka.fight(drako);
+//		janka.fight(drako);
 //		drako.fight(harry);
 //		harry.fight(janka);
-		
-		
+		harry.fight(drako);
 
 		// harry.info();
 		// drako.info();
-		// janka.info();
+//		 janka.info();
 
-//		System.out.println(muggleWeapons());
+//		System.out.println(createByUser());
 //		System.out.println(wizardWeapons());
 
 	}
@@ -94,12 +93,12 @@ public class HarryPotterApp {
 	}
 
 	public static String muggleWeapons() {
-		String[] options = new String[]{ " with a baseball bat.", " with a fist.", " with a right hook.",
-				" with a left hook."," with a Molotov coctail."," with a pocket knife."," with a Japanese sword.",
+		String[] options = new String[] { " with a baseball bat.", " with a fist.", " with a right hook.",
+				" with a left hook.", " with a Molotov coctail.", " with a pocket knife.", " with a Japanese sword.",
 				" with an A-91." };
 		Random r = new Random();
 		String printout = "";
-		int random = r.nextInt((options.length - 0) + 1) + 0;
+		int random = r.nextInt((options.length - 1) + 1) + 0;
 		for (int i = 0; i < options.length; i++) {
 			if (i == random)
 				printout = options[i];
@@ -108,12 +107,12 @@ public class HarryPotterApp {
 	}
 
 	public static String wizardWeapons() {
-		String[] options = new String[]{ " with a nasty spell.", " with a jelly-fingers curse.",
+		String[] options = new String[] { " with a nasty spell.", " with a jelly-fingers curse.",
 				" with a jelly-legs Jinx.", " with a leg-locker curse.", " with a pimple jinx.",
-				" with a stinging hex.", " with a tickling charm.", " with muggle-repelling charm." };
+				" with a stinging hex.", " with a tickling charm.", " with repelling charm." };
 		Random r = new Random();
 		String printout = "";
-		int random = r.nextInt((options.length - 0) + 1) + 0;
+		int random = r.nextInt((options.length - 1) + 1) + 0;
 		for (int i = 0; i < options.length; i++) {
 			if (i == random)
 				printout = options[i];
