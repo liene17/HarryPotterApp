@@ -142,9 +142,10 @@ public class MainMenu {
 				printListNames(wizard.getName());
 				Object charToFight = characterSelection(chooseCharacter(chosenCharacterIndex));
 				wizard.fight(charToFight);
-
+				break;
 			case 7:
 				wizard.info();
+				break;
 			default:
 				System.out.println("Error detector!");
 			}
@@ -199,9 +200,10 @@ public class MainMenu {
 				printListNames(muggle.getName());
 				Object charToFight = characterSelection(chooseCharacter(chosenCharacterIndex));
 				muggle.fight(charToFight);
-
+				break;
 			case 7:
 				muggle.info();
+				break;
 			default:
 				System.out.println("Error detector!");
 			}
@@ -210,7 +212,7 @@ public class MainMenu {
 //	public void doAgain(Object character, int chosenOption, int chosenCharacterIndex) {
 //		System.out.println("Do you want to do another action?");
 //		int input =0;
-//		while (!(input >= 1 || input <= 3)) {
+//		while (!(input >= 1 && input <= 3)) {
 //			System.out.println("Press 1 for choosing another action on this character");
 //			System.out.println("Press 2 for choosing another character");
 //			System.out.println("Press 3 for ending programme");
