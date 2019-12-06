@@ -26,6 +26,7 @@ public class MainMenu {
 		seeOptions();
 		int selectedAction = chooseAction();
 		doMethod(selectedCharacter, selectedAction, chosenCharacterIndex);
+		doAgain(selectedCharacter,chosenCharacterIndex);
 	}
 
 	public int printListNames(String name) {
@@ -44,6 +45,7 @@ public class MainMenu {
 
 	public int chooseCharacter(int callerID) {
 		int characterChoiceIndex = 0;
+		//scanner.next();
 		do {
 			System.out.println("Please enter one of the suggested numbers: ");
 			while (!scanner.hasNextInt()) {
@@ -96,7 +98,7 @@ public class MainMenu {
 			switch (chosenOption) {
 			case 1:
 				System.out.println("Enter the new name for " + wizard.getName() + ": ");
-				String newName = scanner.nextLine();
+				String newName = scanner.next();
 				wizard.rename(newName);
 				break;
 			case 2:
@@ -209,20 +211,35 @@ public class MainMenu {
 			}
 		}
 	}
-//	public void doAgain(Object character, int chosenOption, int chosenCharacterIndex) {
-//		System.out.println("Do you want to do another action?");
-//		int input =0;
-//		while (!(input >= 1 && input <= 3)) {
-//			System.out.println("Press 1 for choosing another action on this character");
-//			System.out.println("Press 2 for choosing another character");
-//			System.out.println("Press 3 for ending programme");
-//			input = scanner.nextInt();
-//		}
-//		switch (input) {
-//		case 1:
-//		case 2:
-//		case 3:
-//		default: 
-//		}
-//	}
+	public void doAgain(Object character, int chosenCharacterIndex) {
+		System.out.println("Do you want to do another action?");
+		int input =0;
+		while (!(input >= 1 && input <= 4)) {
+			System.out.println("Press 1 for choosing another action on this character");
+			System.out.println("Press 2 for choosing another character");
+			System.out.println("Press 3 for creating a new character");
+			System.out.println("Press 4 for ending programme");
+			
+			input = scanner.nextInt();
+		}
+		switch (input) {
+		case 1:
+			seeOptions();
+			int selectedAction = chooseAction();
+			doMethod(character, selectedAction, chosenCharacterIndex);
+			doAgain(character, selectedAction);
+			break;
+		case 2:
+			Menu();
+			break;
+		case 3:
+			HarryPotterApp.createByUser();
+			Menu();
+			break;
+		case 4:
+			System.out.println("Thank you for using the Harry Potter App! Have a magical day!");
+			break;
+		default: 
+		}
+	}
 }
