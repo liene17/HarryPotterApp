@@ -20,7 +20,7 @@ public class HarryPotterApp {
 
 		MainMenu mainMenu = new MainMenu(allCharacters);
 		createByUser();
-		mainMenu.Menu();
+		mainMenu.menu();
 //		mainMenu.printListNames("");
 
 //		janka.fight(drako);
@@ -32,12 +32,10 @@ public class HarryPotterApp {
 		// drako.info();
 //		 janka.info();
 
-		
-
 	}
 
 	public static void createByUser() {
-		
+
 		System.out.println("You have chosen to create a new character of Harry Potter App!");
 		System.out.println("Please, enter the name of the character: ");
 		String inputName = scanner.nextLine();
@@ -46,7 +44,7 @@ public class HarryPotterApp {
 		System.out.println(
 				"Is " + inputName + " going to be a wizard or muggle? (type 'w' for wizard and 'm' for muggle)");
 		String inputIsWizard = ".";
-		
+
 		while (!(inputIsWizard.equals("w") || inputIsWizard.equals("m"))) {
 			if (inputIsWizard.isEmpty()) {
 				System.out.println("Your wish is not clear! Please, tell, if " + inputName
@@ -57,55 +55,55 @@ public class HarryPotterApp {
 		boolean isWizard = inputIsWizard.equals("w") ? true : false;
 		System.out.println("Nice choice!");
 		int inputHealth = 0;
-		
+
 		do {
 			System.out.println("How many health points should " + inputName + " have?");
 			while (!scanner.hasNextInt()) {
 				System.out.println(notNumberMessage);
 				scanner.next();
 			}
-			inputHealth = scanner.nextInt(); 
-			if (inputHealth > 100) {
+			inputHealth = scanner.nextInt();
+			if (inputHealth >= 100) {
 				System.out.println("Hey! Nobody's can be that healthy! Try choosing health less than 100 points.");
-			} else if (inputHealth < 50) {
+			} else if (inputHealth <= 50) {
 				System.out.println("Has " + inputName + " fallen ill? Hmm, try entering number higher than 50...");
 			}
-		} while (!(inputHealth < 100 && inputHealth > 50));
-		
+		} while (!(inputHealth <= 100 && inputHealth >= 50));
+
 		scanner.nextLine();
 		System.out.println("Ok, great!");
 		int inputDamage = 0;
-		
+
 		do {
 			System.out.println("How many damage points should " + inputName + " have?");
 			while (!scanner.hasNextInt()) {
 				System.out.println(notNumberMessage);
 				scanner.next();
 			}
-			inputDamage = scanner.nextInt(); 
-			if (inputDamage > 20) {
+			inputDamage = scanner.nextInt();
+			if (inputDamage >= 20) {
 				System.out.println("Hey! Nobody's can be that strong! Try choosing damage less than 20 points.");
-			} else if (inputDamage < 10) {
+			} else if (inputDamage <= 10) {
 				System.out.println("Do you really want " + inputName
 						+ " to be that weak? Hmm, try entering number higher that 10...");
 			}
 		} while (!(inputDamage > 10 && inputDamage < 20));
-		
+
 		scanner.nextLine();
-		
+
 		if (isWizard) {
 			Wizards creation = new Wizards(inputName, inputLocation, inputHealth, inputDamage, isWizard);
 			String creationTower = creation.askSortingHat();
 			System.out.println("Congratulations! " + inputName + " has been assigned to the " + creationTower);
-			System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth + "HP and "
-					+ inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
+			System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth
+					+ "HP and " + inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
 			allCharacters.add(creation);
 		} else {
 			Muggles creation = new Muggles(inputName, inputLocation, inputHealth, inputDamage, isWizard);
 			String creationTower = creation.askSortingHat();
 			System.out.println("Congratulations! " + inputName + " has been assigned to the " + creationTower);
-			System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth + "HP and "
-					+ inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
+			System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth
+					+ "HP and " + inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
 			allCharacters.add(creation);
 		}
 	}

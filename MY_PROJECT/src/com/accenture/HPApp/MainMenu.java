@@ -19,7 +19,7 @@ public class MainMenu {
 		this.allCharacters = allCharacters;
 	}
 
-	public void Menu() {
+	public void menu() {
 		printListNames("");
 		int chosenCharacterIndex = chooseCharacter(-1);
 		Object selectedCharacter = characterSelection(chosenCharacterIndex);
@@ -45,7 +45,6 @@ public class MainMenu {
 
 	public int chooseCharacter(int callerID) {
 		int characterChoiceIndex = 0;
-		//scanner.next();
 		do {
 			System.out.println("Please enter one of the suggested numbers: ");
 			while (!scanner.hasNextInt()) {
@@ -230,11 +229,11 @@ public class MainMenu {
 			doAgain(character, selectedAction);
 			break;
 		case 2:
-			Menu();
+			menu();
 			break;
 		case 3:
 			HarryPotterApp.createByUser();
-			Menu();
+			menu();
 			break;
 		case 4:
 			System.out.println("Thank you for using the Harry Potter App! Have a magical day!");

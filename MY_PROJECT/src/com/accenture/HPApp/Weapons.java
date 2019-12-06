@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class Weapons {
 	static Random r = new Random();
-	static String[] muggleWeapons = new String[] { " baseball bat.", " fist.", " right hook.", " left hook.",
-			" Molotov coctail.", " pocket knife.", " Japanese sword.", " A-91." };
+	static String[] muggleWeapons = new String[] { "baseball bat.", "fist.", "right hook.", "left hook.",
+			"Molotov coctail.", "pocket knife.", "Japanese sword.", "A-91." };
 
-	static String[] wizardWeapons = new String[] { " nasty spell.", " jelly-fingers curse.", " jelly-legs Jinx.",
-			" leg-locker curse.", " pimple jinx.", " stinging hex.", " tickling charm.", " repelling charm." };
+	static String[] wizardWeapons = new String[] { "nasty spell.", "jelly-fingers curse.", "jelly-legs Jinx.",
+			"leg-locker curse.", "pimple jinx.", "stinging hex.", "tickling charm.", "repelling charm." };
 
 	private static String getWeapon(String[] weapons) {
 		String printout = "";

@@ -48,47 +48,65 @@ public class Wizards extends Muggles {
 	public void fight(Object opponent) {
 		if (opponent instanceof Wizards) {
 			Wizards wizard = (Wizards) opponent;
-			System.out.println("This is fight is between " + this.name + " and " + wizard.getName() + ".");
-			while (this.isStillBrave() && wizard.isStillBrave()) {
-				System.out
-						.println(this.name + " attacked " + wizard.getName() + " with a " + Weapons.getWizardWeapon());
-				wizard.receivedDamage(this.damage);
-				if (this.isStillBrave() && wizard.isStillBrave()) {
+			if (this.location.equals(wizard.getLocation())) {
+				System.out.println("This fight is between " + this.name + " and " + wizard.getName() + ".");
+				while (this.isStillBrave() && wizard.isStillBrave()) {
 					System.out.println(
-							wizard.getName() + " attacked " + this.name + " with a " + Weapons.getWizardWeapon());
-					receivedDamage(wizard.getDamage());
+							this.name + " attacked " + wizard.getName() + " with a " + Weapons.getWizardWeapon());
+					wizard.receivedDamage(this.damage);
+					if (this.isStillBrave() && wizard.isStillBrave()) {
+						System.out.println(
+								wizard.getName() + " attacked " + this.name + " with a " + Weapons.getWizardWeapon());
+						receivedDamage(wizard.getDamage());
+					}
 				}
-			}
-			if (!isStillBrave()) {
-				System.out.println("Fight is finished! " + this.name + " health is below 20. " + this.name
-						+ "s' health is below 20 and is running to Diagon Ally to get a butterbeer for recovery. "
-						+ wizard.getName() + " is victorious and has " + wizard.getHealth() + " HP left.");
+				if (!isStillBrave()) {
+					System.out.println("Fight is finished! " + this.name + " health is below 20. " + this.name
+							+ "s' health is below 20 and is running to Diagon Ally to get a butterbeer for recovery. "
+							+ wizard.getName() + " is victorious and has " + wizard.getHealth() + " HP left.");
+				} else {
+					System.out.println("Fight is finished! " + wizard.getName()
+							+ "s' health is below 20 and is running to Diagon Ally to get a butterbeer for recovery. "
+							+ this.name + " is victorious and has " + this.health + " HP left.");
+				}
 			} else {
-				System.out.println("Fight is finished! " + wizard.getName()
-						+ "s' health is below 20 and is running to Diagon Ally to get a butterbeer for recovery. "
-						+ this.name + " is victorious and has " + this.health + " HP left.");
+				System.out.println(
+						this.name + " and " + wizard.getName() + " are not in a same place so they cannot fight. ");
+				System.out.println("Since " + this.name + " is eager for a fight, " + this.name + " will go to the "
+						+ wizard.getName() + " location.");
+				goTo(wizard);
+				fight(wizard);
 			}
 		} else {
 			Muggles muggle = (Muggles) opponent;
-			System.out.println("This is fight is between " + this.name + " and " + muggle.getName() + ".");
-			while (this.isStillBrave() && muggle.isStillBrave()) {
-				System.out
-						.println(this.name + " attacked " + muggle.getName() + " with a " + Weapons.getWizardWeapon());
-				muggle.receivedDamage(this.damage);
-				if (this.isStillBrave() && muggle.isStillBrave()) {
+			if (this.location.equals(muggle.getLocation())) {
+				System.out.println("This fight is between " + this.name + " and " + muggle.getName() + ".");
+				while (this.isStillBrave() && muggle.isStillBrave()) {
 					System.out.println(
-							muggle.getName() + " attacked " + this.name + " with a " + Weapons.getMuggleWeapon());
-					receivedDamage(muggle.getDamage());
+							this.name + " attacked " + muggle.getName() + " with a " + Weapons.getWizardWeapon());
+					muggle.receivedDamage(this.damage);
+					if (this.isStillBrave() && muggle.isStillBrave()) {
+						System.out.println(
+								muggle.getName() + " attacked " + this.name + " with a " + Weapons.getMuggleWeapon());
+						receivedDamage(muggle.getDamage());
+					}
 				}
-			}
-			if (!isStillBrave()) {
-				System.out.println("Fight is finished! " + this.name
-						+ "s' health is below 20 and is running to Diagon Ally to get a butterbeer for recovery "
-						+ muggle.getName() + " is victorious and has " + muggle.getHealth() + " HP left.");
+				if (!isStillBrave()) {
+					System.out.println("Fight is finished! " + this.name
+							+ "s' health is below 20 and is running to Diagon Ally to get a butterbeer for recovery "
+							+ muggle.getName() + " is victorious and has " + muggle.getHealth() + " HP left.");
+				} else {
+					System.out.println("Fight is finished! " + muggle.getName()
+							+ "s' health is below 20 and is going to Old Riga to get a regular beet for recovery. "
+							+ this.name + " is victorious and has " + this.health + " HP left.");
+				}
 			} else {
-				System.out.println("Fight is finished! " + muggle.getName()
-						+ "s' health is below 20 and is going to Old Riga to get a regular beet for recovery. "
-						+ this.name + " is victorious and has " + this.health + " HP left.");
+				System.out.println(
+						this.name + " and " + muggle.getName() + " are not in a same place so they cannot fight. ");
+				System.out.println("Since " + this.name + " is eager for a fight, " + this.name + " will go to the "
+						+ muggle.getName() + " location.");
+				goTo(muggle);
+				fight(muggle);
 			}
 		}
 	}
