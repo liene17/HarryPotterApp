@@ -18,7 +18,9 @@ public class HarryPotterApp {
 		allCharacters.add(janka);
 
 		MainMenu mainMenu = new MainMenu(allCharacters);
-		mainMenu.Menu();
+//		mainMenu.Menu();
+		createByUser();
+		mainMenu.printListNames("");
 
 //		janka.fight(drako);
 //		drako.fight(harry);
@@ -29,12 +31,11 @@ public class HarryPotterApp {
 		// drako.info();
 //		 janka.info();
 
-//		System.out.println(createByUser());
-//		System.out.println(wizardWeapons());
+		
 
 	}
 
-	public static Muggles createByUser() {
+	public static void createByUser() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("You have chosen to create a new character of Harry Potter App!");
 		System.out.println("Please, enter the name of the character: ");
@@ -43,7 +44,7 @@ public class HarryPotterApp {
 		String inputLocation = scanner.nextLine();
 		System.out.println(
 				"Is " + inputName + " going to be a wizard or muggle? (type 'w' for wizard and 'm' for muggle)");
-		String inputIsWizard = "";
+		String inputIsWizard = ".";
 		while (!(inputIsWizard.equals("w") || inputIsWizard.equals("m"))) {
 			if (inputIsWizard.isEmpty()) {
 				System.out.println("Your wish is not clear! Please, tell, if " + inputName
@@ -74,11 +75,20 @@ public class HarryPotterApp {
 			}
 		}
 		scanner.close();
-		Muggles creation = new Muggles(inputName, inputLocation, inputHealth, inputDamage, isWizard);
-		String creationTower = creation.askSortingHat();
-		System.out.println("Congratulations! " + inputName + " has been assigned to the " + creationTower);
-		System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth + "HP and "
-				+ inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
-		return creation;
+		if (isWizard) {
+			Wizards creation = new Wizards(inputName, inputLocation, inputHealth, inputDamage, isWizard);
+			String creationTower = creation.askSortingHat();
+			System.out.println("Congratulations! " + inputName + " has been assigned to the " + creationTower);
+			System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth + "HP and "
+					+ inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
+			allCharacters.add(creation);
+		} else {
+			Muggles creation = new Muggles(inputName, inputLocation, inputHealth, inputDamage, isWizard);
+			String creationTower = creation.askSortingHat();
+			System.out.println("Congratulations! " + inputName + " has been assigned to the " + creationTower);
+			System.out.println("You have created " + inputName + " in " + inputLocation + " with " + inputHealth + "HP and "
+					+ inputDamage + " damage power, who goes to " + creationTower + ". What an opponent!");
+			allCharacters.add(creation);
+		}
 	}
 }
