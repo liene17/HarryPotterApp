@@ -18,11 +18,10 @@ public class HarryPotterApp {
 		allCharacters.add(drako);
 		allCharacters.add(janka);
 
-//		harry.rename();
-//		drako.rename();
-//		janka.rename();
-		System.out.println("Test");
-
+		harry.rename();
+		drako.rename();
+		janka.rename();
+		
 		MainMenu mainMenu = new MainMenu(allCharacters);
 		createByUser();
 		mainMenu.menu();
