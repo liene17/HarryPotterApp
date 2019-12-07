@@ -97,8 +97,8 @@ public class MainMenu {
 			switch (chosenOption) {
 			case 1:
 				System.out.println("Enter the new name for " + wizard.getName() + ": ");
-				String newName = scanner.next();
-				wizard.rename(newName);
+				String newName = wizard.rename();
+				
 				break;
 			case 2:
 				System.out.println("To which character you want to go to?");
@@ -155,8 +155,8 @@ public class MainMenu {
 			switch (chosenOption) {
 			case 1:
 				System.out.println("Enter the new name for " + muggle.getName() + ": ");
-				String newName = scanner.nextLine();
-				muggle.rename(newName);
+				String newName = muggle.rename();
+				
 				break;
 			case 2:
 				System.out.println("To which character you want to go to?");

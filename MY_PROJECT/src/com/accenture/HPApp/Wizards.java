@@ -114,7 +114,7 @@ public class Wizards extends Muggles {
 	@Override
 	public void info() {
 		System.out.println(this.name + " is at " + this.location + " and is a wizard. " + this.name + " has "
-				+ this.health + " health and can make " + this.damage + " during a fight. " + this.name + " studies at "
+				+ this.health + " health and can make " + this.damage + " damage during a fight. " + this.name + " studies at "
 				+ this.studyPlace);
 	}
 }

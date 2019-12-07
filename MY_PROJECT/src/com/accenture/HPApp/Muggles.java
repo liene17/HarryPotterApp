@@ -71,10 +71,11 @@ public class Muggles {
 		return true;
 	}
 
-	public void rename(String name) {
-		name = scanner.nextLine();
+	public String rename() {
+		String name = scanner.nextLine();
 		System.out.println(this.name + " is now called " + name);
 		setName(name);
+		return name;
 	}
 
 	public String goTo(Object characterObject) {
