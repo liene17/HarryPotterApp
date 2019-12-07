@@ -73,7 +73,7 @@ public class Wizards extends Muggles {
 				System.out.println(
 						this.name + " and " + wizard.getName() + " are not in a same place so they cannot fight. ");
 				System.out.println("Since " + this.name + " is eager for a fight, " + this.name + " will go to the "
-						+ wizard.getName() + " location.");
+						+ wizard.getName() + "s' location.");
 				goTo(wizard);
 				fight(wizard);
 			}
@@ -97,14 +97,14 @@ public class Wizards extends Muggles {
 							+ muggle.getName() + " is victorious and has " + muggle.getHealth() + " HP left.");
 				} else {
 					System.out.println("Fight is finished! " + muggle.getName()
-							+ "s' health is below 20 and is going to Old Riga to get a regular beet for recovery. "
+							+ "s' health is below 20 and is going to Old Riga to get a regular beer for recovery. "
 							+ this.name + " is victorious and has " + this.health + " HP left.");
 				}
 			} else {
 				System.out.println(
 						this.name + " and " + muggle.getName() + " are not in a same place so they cannot fight. ");
 				System.out.println("Since " + this.name + " is eager for a fight, " + this.name + " will go to the "
-						+ muggle.getName() + " location.");
+						+ muggle.getName() + "s' location.");
 				goTo(muggle);
 				fight(muggle);
 			}
@@ -114,7 +114,7 @@ public class Wizards extends Muggles {
 	@Override
 	public void info() {
 		System.out.println(this.name + " is at " + this.location + " and is a wizard. " + this.name + " has "
-				+ this.health + " health and can make " + this.damage + " damage during a fight. " + this.name + " studies at "
-				+ this.studyPlace);
+				+ this.health + " health and can make " + this.damage + " damage sduring a fight. " + this.name
+				+ " studies at " + this.studyPlace);
 	}
 }

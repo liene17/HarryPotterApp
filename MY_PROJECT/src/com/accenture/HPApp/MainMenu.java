@@ -153,8 +153,7 @@ public class MainMenu {
 			switch (chosenOption) {
 			case 1:
 				System.out.println("Enter the new name for " + muggle.getName() + ": ");
-				String newName = muggle.rename();
-
+				muggle.rename();
 				break;
 			case 2:
 				System.out.println("To which character you want to go to?");

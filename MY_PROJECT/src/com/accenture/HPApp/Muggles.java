@@ -18,18 +18,22 @@ public class Muggles {
 		this.location = location;
 		if (health > 100) {
 			health = 100;
+			System.out.println("The entered value for health is higher than allowed." + name + " has now 100 HP.");
 		} else if (health < 50) {
 			health = 50;
+			System.out.println("The entered value for health is lower than allowed." + name + " has now 50 HP.");
 		}
 		this.health = health;
 		if (damage > 20) {
 			damage = 20;
+			System.out.println("The entered value for damage is higher than allowed. "  + name + " has now 20 damage points.");
 		} else if (damage < 10) {
 			damage = 10;
+			System.out.println("The entered value for damage is lower than allowed. " + name + " has now 10 damage points.");
 		}
 		this.damage = damage;
 		this.isWizard = isWizard;
-	}
+		}
 
 	public String getName() {
 		return name;
@@ -51,16 +55,8 @@ public class Muggles {
 		return health;
 	}
 
-	private void setHealth(int health) {
-		this.health = health;
-	}
-
 	protected int getDamage() {
 		return damage;
-	}
-
-	private void setDamage(int damage) {
-		this.damage = damage;
 	}
 
 	public String getStudyplace() {
@@ -73,7 +69,13 @@ public class Muggles {
 
 	public String rename() {
 		System.out.println("Enter the new name for " + this.getName() + ": ");
-		String name = scanner.nextLine();
+		String name = this.name;
+		while (name.isEmpty() || name.equals(this.name)) {
+			name = scanner.nextLine();
+			if (name.isEmpty()) {
+				System.out.println("Don`t delete " + this.name + " name! Enter something!");
+			}
+		}
 		System.out.println(this.name + " is now called " + name);
 		setName(name);
 		return name;
@@ -116,7 +118,7 @@ public class Muggles {
 		}
 	}
 
-	public void receivedDamage(int damage) {
+	protected void receivedDamage(int damage) {
 		if (isStillBrave() && damage > 0) {
 			if (this.health - damage > 0) {
 				this.health -= damage;
@@ -158,7 +160,7 @@ public class Muggles {
 				System.out.println(
 						this.name + " and " + wizard.getName() + " are not in a same place so they cannot fight. ");
 				System.out.println("Since " + this.name + " is eager for a fight, " + this.name + " will go to the "
-						+ wizard.getName() + " location.");
+						+ wizard.getName() + "s' location.");
 				goTo(wizard);
 				fight(wizard);
 			}
@@ -189,7 +191,7 @@ public class Muggles {
 				System.out.println(
 						this.name + " and " + muggle.getName() + " are not in a same place so they cannot fight. ");
 				System.out.println("Since " + this.name + " is eager for a fight, " + this.name + " will go to the "
-						+ muggle.getName() + " location.");
+						+ muggle.getName() + "s' location.");
 				goTo(muggle);
 				fight(muggle);
 			}
@@ -198,7 +200,7 @@ public class Muggles {
 
 	public void info() {
 		System.out.println(this.name + " is at " + this.location + " and is a muggle. " + this.name + " has "
-				+ this.health + " health and can make " + this.damage + " damage during a fight. " + this.name + " studies at "
-				+ this.studyPlace);
+				+ this.health + " health and can make " + this.damage + " damage during a fight. " + this.name
+				+ " studies at " + this.studyPlace);
 	}
 }
