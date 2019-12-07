@@ -16,8 +16,8 @@ public class Muggles {
 	public Muggles(String name, String location, int health, int damage, boolean isWizard) {
 		this.name = name;
 		this.location = location;
-		if (health > 99) {
-			health = 99;
+		if (health > 100) {
+			health = 100;
 		} else if (health < 50) {
 			health = 50;
 		}
@@ -72,6 +72,7 @@ public class Muggles {
 	}
 
 	public String rename() {
+		System.out.println("Enter the new name for " + this.getName() + ": ");
 		String name = scanner.nextLine();
 		System.out.println(this.name + " is now called " + name);
 		setName(name);

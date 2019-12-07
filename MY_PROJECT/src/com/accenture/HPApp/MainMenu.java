@@ -26,7 +26,7 @@ public class MainMenu {
 		seeOptions();
 		int selectedAction = chooseAction();
 		doMethod(selectedCharacter, selectedAction, chosenCharacterIndex);
-		doAgain(selectedCharacter,chosenCharacterIndex);
+		doAgain(selectedCharacter, chosenCharacterIndex);
 	}
 
 	public int printListNames(String name) {
@@ -96,9 +96,7 @@ public class MainMenu {
 			Wizards wizard = (Wizards) character;
 			switch (chosenOption) {
 			case 1:
-				System.out.println("Enter the new name for " + wizard.getName() + ": ");
-				String newName = wizard.rename();
-				
+				wizard.rename();
 				break;
 			case 2:
 				System.out.println("To which character you want to go to?");
@@ -156,7 +154,7 @@ public class MainMenu {
 			case 1:
 				System.out.println("Enter the new name for " + muggle.getName() + ": ");
 				String newName = muggle.rename();
-				
+
 				break;
 			case 2:
 				System.out.println("To which character you want to go to?");
@@ -210,15 +208,16 @@ public class MainMenu {
 			}
 		}
 	}
+
 	public void doAgain(Object character, int chosenCharacterIndex) {
 		System.out.println("Do you want to do another action?");
-		int input =0;
+		int input = 0;
 		while (!(input >= 1 && input <= 4)) {
 			System.out.println("Press 1 for choosing another action on this character");
 			System.out.println("Press 2 for choosing another character");
 			System.out.println("Press 3 for creating a new character");
 			System.out.println("Press 4 for ending programme");
-			
+
 			input = scanner.nextInt();
 		}
 		switch (input) {
@@ -237,8 +236,12 @@ public class MainMenu {
 			break;
 		case 4:
 			System.out.println("Thank you for using the Harry Potter App! Have a magical day!");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("Diclaimer: Original Harry Potter authors have no idea about this app!");
+			System.out.println("(c) Team Number One, 2019");
 			break;
-		default: 
+		default:
 		}
 	}
 }

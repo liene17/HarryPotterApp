@@ -17,22 +17,16 @@ public class HarryPotterApp {
 		allCharacters.add(harry);
 		allCharacters.add(drako);
 		allCharacters.add(janka);
+		
+		harry.rename();
+		drako.rename();
+		janka.rename();
 
 		MainMenu mainMenu = new MainMenu(allCharacters);
 		createByUser();
 		mainMenu.menu();
-//		mainMenu.printListNames("");
 
-//		janka.fight(drako);
-//		drako.fight(harry);
-//		harry.fight(janka);
-//		harry.fight(drako);
-
-//		 harry.info();
-		// drako.info();
-//		 janka.info();
-
-	}
+		}
 
 	public static void createByUser() {
 
@@ -69,7 +63,7 @@ public class HarryPotterApp {
 			}
 			inputHealth = scanner.nextInt();
 			if (inputHealth > 100) {
-				System.out.println("Hey! Nobody's can be that healthy! Try choosing health less than 100 points.");
+				System.out.println("Hey! Nobody's can be that healthy! Try choosing health less than 101 points.");
 			} else if (inputHealth <= 50) {
 				System.out.println("Has " + inputName + " fallen ill? Hmm, try entering number higher than 50...");
 			}
