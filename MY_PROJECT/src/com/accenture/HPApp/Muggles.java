@@ -16,16 +16,16 @@ public class Muggles {
 	public Muggles(String name, String location, int health, int damage, boolean isWizard) {
 		this.name = name;
 		this.location = location;
-		if (health > 100) {
-			health = 100;
-		} else if (health < 1) {
-			health = 1;
+		if (health > 99) {
+			health = 99;
+		} else if (health < 50) {
+			health = 50;
 		}
 		this.health = health;
-		if (damage > 100) {
-			damage = 100;
-		} else if (damage < 1) {
-			damage = 1;
+		if (damage > 20) {
+			damage = 20;
+		} else if (damage < 10) {
+			damage = 10;
 		}
 		this.damage = damage;
 		this.isWizard = isWizard;

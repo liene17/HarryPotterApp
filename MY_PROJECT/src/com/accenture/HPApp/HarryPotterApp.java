@@ -51,6 +51,11 @@ public class HarryPotterApp {
 						+ " is going to be a wizard or muggle? (type 'w' for wizard and 'm' for muggle)");
 			}
 			inputIsWizard = scanner.nextLine();
+			if (inputIsWizard.contentEquals(".") || !(inputIsWizard.equals("w") || inputIsWizard.equals("m"))) {
+				System.out.println("Your wish is not clear! Please, tell, if " + inputName
+						+ " is going to be a wizard or muggle? (type 'w' for wizard and 'm' for muggle)");
+			}
+
 		}
 		boolean isWizard = inputIsWizard.equals("w") ? true : false;
 		System.out.println("Nice choice!");
@@ -63,12 +68,12 @@ public class HarryPotterApp {
 				scanner.next();
 			}
 			inputHealth = scanner.nextInt();
-			if (inputHealth >= 100) {
+			if (inputHealth > 100) {
 				System.out.println("Hey! Nobody's can be that healthy! Try choosing health less than 100 points.");
 			} else if (inputHealth <= 50) {
 				System.out.println("Has " + inputName + " fallen ill? Hmm, try entering number higher than 50...");
 			}
-		} while (!(inputHealth <= 100 && inputHealth >= 50));
+		} while (!(inputHealth <= 100 && inputHealth > 50));
 
 		scanner.nextLine();
 		System.out.println("Ok, great!");
